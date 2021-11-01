@@ -1,7 +1,7 @@
 
 const fetchUsers = async() =>
-     //await(await fetch('/.netlify/functions/getusers')).json();
-     await(await fetch('http://localhost:9000/getUsers')).json();
+     await(await fetch('/.netlify/functions/getusers')).json();
+     //await(await fetch('http://localhost:9000/getUsers')).json();
      let i=1;
 fetchUsers().then((result) => {
     userTable=document.querySelector('#usertable');
