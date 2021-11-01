@@ -1,10 +1,14 @@
 
 const fetchUsers = async() =>
-     await(await fetch('/.netlify/functions/getusers')).json();
-    // await(await fetch('http://localhost:9000/getUsers')).json();
+     //await(await fetch('/.netlify/functions/getusers')).json();
+     await(await fetch('http://localhost:9000/getUsers')).json();
+     let i=1;
 fetchUsers().then((result) => {
     userTable=document.querySelector('#usertable');
     result.forEach(user => {
+        const th=document.createElement('th');
+        th.setAttribute('scope','row');
+        th.append(i);
         const rowitem=document.createElement('tr');
         
         const col1=document.createElement('td');
@@ -26,11 +30,11 @@ fetchUsers().then((result) => {
         const col3=document.createElement('td');
         col3.append(link);
         
-
+        rowitem.append(th);
         rowitem.append(col1);
         rowitem.append(col2);
         rowitem.append(col3);
         userTable.append(rowitem);
-
+        i=i+1;
     });
 });
